@@ -7,7 +7,7 @@
     # ./plugins/languages/ocaml.nix
     ./plugins/languages/c.nix
     # ./plugins/languages/python.nix
-    # ./plugins/languages/zig.nix
+    ./plugins/languages/zig.nix
     ./plugins/languages/docker.nix
     #./plugins/languages/java.nix
     #./plugins/languages/crystal.nix
