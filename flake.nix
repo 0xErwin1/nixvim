@@ -32,15 +32,6 @@
       url = "github:MeanderingProgrammer/render-markdown.nvim";
       flake = false;
     };
-
-    plugin-nui-components = {
-      url = "github:grapp-dev/nui-components.nvim";
-      flake = false;
-    };
-    plugin-nui = {
-      url = "github:MunifTanjim/nui.nvim";
-      flake = false;
-    };
     plugin-kulala = {
       url = "github:mistweaverco/kulala.nvim";
       flake = false;

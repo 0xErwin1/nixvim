@@ -8,7 +8,6 @@
     ./notify.nix
     ./themes.nix
     ./navic.nix
-    ./nui.nix
     ./todo-comments.nix
     ./web-devicons.nix
   ];
