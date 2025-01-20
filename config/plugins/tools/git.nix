@@ -30,19 +30,6 @@
           };
         };
       };
-      lazyLoad = {
-        settings = {
-          cmd = "Neogit";
-          keys = [
-            "<leader>gg"
-          ];
-          options = {
-            desc = "Open Neogit";
-            silent = true;
-            nowait = true;
-          };
-        };
-      };
     };
 
     neogit = {
@@ -51,4 +38,17 @@
     };
     diffview.enable = true;
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>gg";
+      options = {
+        desc = "Open Neogit";
+        silent = true;
+        nowait = true;
+      };
+      action = "<cmd>Neogit<cr>";
+    }
+  ];
 }
