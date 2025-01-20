@@ -7,5 +7,6 @@
       width = 360;
       height = 200;
     };
+    lazyLoad.settings.ft = "markdown";
   };
 }

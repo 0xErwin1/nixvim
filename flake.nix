@@ -36,6 +36,10 @@
       url = "github:mistweaverco/kulala.nvim";
       flake = false;
     };
+    plugin-lazydo = {
+      url = "github:Dan7h3x/LazyDo";
+      flake = false;
+    };
   };
 
   outputs =

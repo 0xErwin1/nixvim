@@ -8,7 +8,7 @@
     pkgs.ripgrep
   ];
   plugins.telescope = {
-    enable = true;
+    enable = false;
     settings.defaults = {
       width = 0.85;
       prompt_position = "top";

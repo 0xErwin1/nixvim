@@ -9,7 +9,6 @@
   '';
 
   plugins = {
-    lazy.enable = true;
     dressing = {
       enable = true;
     };

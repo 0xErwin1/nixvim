@@ -4,20 +4,21 @@
     ./autopairs.nix
     ./comment.nix
     ./conform.nix
+    ./dap.nix
     ./escape.nix
     ./fzf-lua.nix
-    ./neoscroll.nix
     ./git.nix
-    ./outline.nix
+    ./glow.nix
+    ./hover.nix
+    ./neoscroll.nix
     ./oil.nix
+    ./outline.nix
+    ./request.nix
     ./surround.nix
     ./telescope.nix
-    ./which-key.nix
-    ./hover.nix
     ./terminal.nix
-    ./glow.nix
-    ./request.nix
-    ./dap.nix
+    ./which-key.nix
+    ./obsidian.nix
   ];
 
   plugins = {
