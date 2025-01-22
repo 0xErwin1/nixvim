@@ -23,7 +23,7 @@
     };
 
     keymaps = {
-      "<leader>b" = {
+      "<leader>fb" = {
         action = "buffers";
         options = {
           nowait = false;

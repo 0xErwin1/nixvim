@@ -1,22 +1,18 @@
 {
-  pkgs,
-  inputs,
-  helpers,
-  ...
-}:
-{
-  extraPlugins = [
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "kulala";
-      src = inputs.plugin-kulala;
-    })
-  ];
-
-  extraConfigLua = ''
-    require('kulala').setup()
-  '';
-
   filetype.extension.http = "http";
+
+  plugins = {
+    kulala = {
+      enable = true;
+      autoLoad = true;
+      lazyLoad = {
+        enable = true;
+        settings = {
+          ft = "http";
+        };
+      };
+    };
+  };
 
   files."after/ftplugin/http.lua".keymaps = [
     {
@@ -89,17 +85,6 @@
       action = "<cmd>lua require('kulala').set_selected_env()<cr>";
       options = {
         desc = "Set selected environment";
-      };
-    }
-  ];
-
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>rp";
-      action = helpers.mkRaw "function() require('kulala').search() end";
-      options = {
-        desc = "Search request";
       };
     }
   ];

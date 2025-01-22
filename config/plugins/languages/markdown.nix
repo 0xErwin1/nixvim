@@ -1,46 +1,48 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
+let
+  lazyLoad = {
+    enable = true;
+    settings = {
+      ft = "http";
+    };
+  };
+in
 {
-  extraPlugins = [
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "render-markdown";
-      src = inputs.plugin-render-markdown;
-    })
-  ];
-
   extraPackages = [
     pkgs.python312Packages.pylatexenc
   ];
 
-  extraConfigLua = ''
-    require("render-markdown").setup({
-      file_types = { "markdown" },
-      latex = {
-        enabled = false,
-      },
-      checkbox = {
-        enabled = true,
-        custom = {
-          started = {
-            raw = "[>]",
-            rendered = "",
-            highlight = "RenderMarkdownTableHead",
-          },
-          deleted = {
-            raw = "[~]",
-            rendered = "",
-            highlight = "RenderMarkdownError",
-          },
-          waiting = {
-            raw = "[@]",
-            rendered = "󰥔 ",
-            highlight = "RenderMarkdownInfo",
-          },
-        },
-      },
-    })
-  '';
-
   plugins = {
+    render-markdown = {
+      enable = true;
+      autoLoad = true;
+      inherit lazyLoad;
+      settings = {
+        latex = {
+          enabled = false;
+        };
+        checkbox = {
+          enabled = true;
+          custom = {
+            started = {
+              raw = "[>]";
+              rendered = "";
+              highlight = "RenderMarkdownTableHead";
+            };
+            deleted = {
+              raw = "[~]";
+              rendered = "";
+              highlight = "RenderMarkdownError";
+            };
+            waiting = {
+              raw = "[@]";
+              rendered = "󰥔 ";
+              highlight = "RenderMarkdownInfo";
+            };
+          };
+        };
+      };
+    };
     lsp.servers.ltex = {
       enable = true;
 
@@ -61,6 +63,27 @@
         };
       };
     };
+
     none-ls.sources.diagnostics.markdownlint.enable = true;
+
+    obsidian = {
+      enable = true;
+      settings = {
+        completion = {
+          min_chars = 2;
+          nvim_cmp = true;
+        };
+        workspaces = [
+          {
+            name = "personal";
+            path = "~/.tabularium/";
+          }
+          {
+            name = "work";
+            path = "~/.officium/";
+          }
+        ];
+      };
+    };
   };
 }

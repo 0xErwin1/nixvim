@@ -19,25 +19,12 @@
       url = "github:Ignis-lang/tree-sitter-ion";
       flake = false;
     };
-
     plugin-surround = {
       url = "github:ur4ltz/surround.nvim";
       flake = false;
     };
     plugin-tokyodark = {
       url = "github:tiagovla/tokyodark.nvim";
-      flake = false;
-    };
-    plugin-render-markdown = {
-      url = "github:MeanderingProgrammer/render-markdown.nvim";
-      flake = false;
-    };
-    plugin-kulala = {
-      url = "github:mistweaverco/kulala.nvim";
-      flake = false;
-    };
-    plugin-lazydo = {
-      url = "github:Dan7h3x/LazyDo";
       flake = false;
     };
   };

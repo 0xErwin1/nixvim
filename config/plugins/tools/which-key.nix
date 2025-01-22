@@ -9,10 +9,6 @@
           group = "Buffer";
         }
         {
-          __unkeyed-1 = "<leader>g";
-          group = "Git";
-        }
-        {
           __unkeyed-1 = "<leader>d";
           group = "Diagnostic";
         }

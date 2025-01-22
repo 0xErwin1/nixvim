@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  plugins.lz-n.enable = true;
+
   imports = [
     ./ui
     ./lsp

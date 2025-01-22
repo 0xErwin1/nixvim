@@ -20,7 +20,7 @@
       relativenumber = true;
       splitbelow = true;
       mouse = "a";
-      conceallevel = 3;
+      conceallevel = 2;
       hidden = true;
       expandtab = true;
       tabstop = 2;

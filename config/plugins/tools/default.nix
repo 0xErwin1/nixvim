@@ -15,7 +15,6 @@
     ./telescope.nix
     ./terminal.nix
     ./which-key.nix
-    ./obsidian.nix
   ];
 
   plugins = {
