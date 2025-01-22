@@ -10,6 +10,7 @@
     ./navic.nix
     ./todo-comments.nix
     ./web-devicons.nix
+    ./colorizer.nix
   ];
 
 }

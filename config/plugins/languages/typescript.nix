@@ -26,7 +26,6 @@ in
     };
 
     conform-nvim = {
-      enable = true;
       settings.formatters_by_ft = {
         javascript = formatters;
         typescript = formatters;

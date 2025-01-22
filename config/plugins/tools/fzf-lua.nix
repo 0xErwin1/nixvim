@@ -31,7 +31,7 @@
           silent = true;
         };
       };
-      "<leader>ff" = {
+      "<leader><leader>" = {
         action = "files";
         options = {
           desc = "Find files";

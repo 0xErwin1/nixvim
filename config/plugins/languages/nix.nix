@@ -14,6 +14,5 @@
         code_actions.statix.enable = true;
       };
     };
-
   };
 }
