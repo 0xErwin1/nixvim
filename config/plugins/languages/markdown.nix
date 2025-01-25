@@ -3,7 +3,7 @@ let
   lazyLoad = {
     enable = true;
     settings = {
-      ft = "http";
+      ft = "markdown";
     };
   };
 in
