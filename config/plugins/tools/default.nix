@@ -14,6 +14,7 @@
     ./surround.nix
     ./telescope.nix
     ./terminal.nix
+    ./trouble.nix
     ./which-key.nix
   ];
 
