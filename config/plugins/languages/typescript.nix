@@ -1,13 +1,20 @@
 { pkgs, lib, ... }:
 let
-  formatters =  lib.nixvim.mkRaw ''
-    function()
-      local check_biome_if_config_exists = vim.fn.filereadable(vim.fn.getcwd() .. "/biome.json")
-
-      if check_biome_if_config_exists == 1 then
-        return { "biome" }
+  formatters = lib.nixvim.mkRaw ''
+    function(bufnr)
+      if require("conform").get_formatter_info("biome", bufnr).available then
+        return {
+          "biome",
+          timeout_ms = 2000,
+          stop_after_first = true,
+        }
       else
-        return { "prettierd", "prettier" }
+        return {
+          "prettierd",
+          "prettier",
+          timeout_ms = 2000,
+          stop_after_first = true,
+        }
       end
     end
   '';
