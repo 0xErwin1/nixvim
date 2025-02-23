@@ -10,6 +10,7 @@
     ./plugins/languages/zig.nix
     ./plugins/languages/docker.nix
     ./plugins/languages/go.nix
+    ./plugins/languages/perl.nix
     #./plugins/languages/java.nix
   ];
 }

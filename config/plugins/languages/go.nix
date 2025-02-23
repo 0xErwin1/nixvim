@@ -7,5 +7,11 @@
         go = [ "gofmt" ];
       };
     };
+
+    none-ls = {
+      sources = {
+        diagnostics.golangci_lint.enable = true;
+      };
+    };
   };
 }
