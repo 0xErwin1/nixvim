@@ -13,10 +13,8 @@
     settings.formatters_by_ft = {
       lua = [ "stylua" ];
       json = [
-        [
-          "prettierd"
-          "jq"
-        ]
+        "prettierd"
+        "jq"
       ];
       markdown = [ "prettierd" ];
       ignis = [

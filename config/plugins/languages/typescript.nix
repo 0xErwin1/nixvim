@@ -30,12 +30,15 @@ in
     lsp.servers = {
       ts_ls.enable = true;
       biome.enable = true;
+      astro.enable = true;
     };
 
     conform-nvim = {
       settings.formatters_by_ft = {
         javascript = formatters;
         typescript = formatters;
+        astro = formatters;
+        vue = formatters;
       };
     };
   };
