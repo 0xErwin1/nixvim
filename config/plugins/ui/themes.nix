@@ -1,25 +1,5 @@
 { pkgs, inputs, ... }:
 {
-  extraPlugins = [
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "tokyodark";
-      src = inputs.plugin-tokyodark;
-    })
-  ];
-
-  extraConfigLua = ''
-    require("tokyodark").setup({
-      transparent_background = true,
-      gamma = 1.00,
-      styles = {
-        comments = { italic = true },
-        keywords = { italic = true, bold = true },
-        identifiers = { italic = true },
-        functions = { bold = true, italic = true },
-        variables = { bold = true },
-      },
-    })
-  '';
 
   plugins.transparent.enable = true;
 
@@ -52,14 +32,18 @@
     };
 
     ayu = {
-      enable = true;
+      enable = false;
       settings = {
         mirage = true;
       };
     };
 
     tokyonight = {
-      enable = false;
+      enable = true;
+      settings = {
+        style = "storm";
+        transparent = true;
+      };
     };
 
     gruvbox = {
