@@ -35,7 +35,7 @@
     {
       mode = "n";
       key = "<leader>cf";
-      action = "<cmd>lua require('conform').format({ async = true })<CR>";
+      action = "<cmd>lua require('conform').format({ async = true, lsp_format = 'fallback' })<CR>";
       options = {
         desc = "Format code";
       };

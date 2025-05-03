@@ -3,7 +3,7 @@
 
   plugins = {
     kulala = {
-      enable = true;
+      enable = false;
       autoLoad = true;
       lazyLoad = {
         enable = true;
