@@ -8,15 +8,15 @@
 
     # Custom plugins
     plugin-treesitter = {
-      url = "github:BasileusErwin/nvim-treesitter";
+      url = "gitlab:0xErwin/nvim-treesitter";
       flake = false;
     };
     tree-sitter-ignis = {
-      url = "github:Ignis-lang/tree-sitter-ignis";
+      url = "gitlab:0xErwin/tree-sitter-ignis";
       flake = false;
     };
     tree-sitter-ion = {
-      url = "github:Ignis-lang/tree-sitter-ion";
+      url = "gitlab:0xErwin/tree-sitter-ion";
       flake = false;
     };
     plugin-surround = {
