@@ -62,7 +62,7 @@ in
     cmp-git.enable = true;
     cmp-nvim-lsp-signature-help.enable = true;
     cmp-treesitter.enable = true;
-    copilot-cmp.enable = false;
+    copilot-cmp.enable = true;
 
     cmp = {
       enable = true;
@@ -70,6 +70,7 @@ in
         sources = [
           { name = "nvim_lsp"; }
           { name = "supermaven"; }
+          { name = "copilot"; }
           { name = "luasnip"; }
           { name = "path"; }
           { name = "buffer"; }

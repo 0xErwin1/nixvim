@@ -44,6 +44,10 @@
           group = "Request";
           icon = " ";
         }
+        {
+          __unkeyed-1 = "<leader>a";
+          group = "AI";
+        }
       ];
     };
   };
