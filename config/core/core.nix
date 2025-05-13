@@ -16,6 +16,8 @@
     };
 
     opts = {
+      shadafile = "NONE";
+      lazyredraw = true;
       number = true;
       relativenumber = true;
       splitbelow = true;
@@ -52,6 +54,13 @@
       splitkeep = "screen";
       shortmess = "filnxtToOFWIcC";
       filetype = "on";
+      inccommand = "nosplit";
+      wildmode = ["longest" "full"];
+      wildoptions = ["pum" "tagfile"];
+      foldmethod = "expr";
+      foldexpr = "nvim_treesitter#foldexpr()";
+      foldenable = false;
+      completeopt = ["menu" "menuone" "noselect"];
     };
 
   };
