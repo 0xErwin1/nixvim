@@ -17,7 +17,6 @@
 
     opts = {
       shadafile = "NONE";
-      lazyredraw = true;
       number = true;
       relativenumber = true;
       splitbelow = true;
@@ -62,6 +61,5 @@
       foldenable = false;
       completeopt = ["menu" "menuone" "noselect"];
     };
-
   };
 }

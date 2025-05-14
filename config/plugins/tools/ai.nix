@@ -8,7 +8,7 @@
       enable = true;
       settings = {
         panel = {
-          enabled = true;
+          enabled = false;
           auto_refresh = true;
           keymap = {
             accept = "<CR>";
@@ -21,7 +21,7 @@
           };
         };
         suggestion = {
-          enabled = true;
+          enabled = false;
           auto_trigger = true;
           keymap = {
             accept = "<M-l>";
@@ -53,6 +53,11 @@
         openai = {
           endpoint = "https://api.openai.com/v1";
           model = "gpt-4o-mini";
+        };
+        dual_boost = {
+          enabled = true;
+          provider = "openai";
+          model = "gpt-4.1";
         };
         behaviour = {
           auto_suggestions = false;
