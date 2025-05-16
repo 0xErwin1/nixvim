@@ -32,14 +32,14 @@
     };
 
     ayu = {
-      enable = false;
+      enable = true;
       settings = {
-        mirage = true;
+        mirage = false;
       };
     };
 
     tokyonight = {
-      enable = true;
+      enable = false;
       settings = {
         style = "storm";
         transparent = true;
