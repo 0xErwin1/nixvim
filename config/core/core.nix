@@ -54,12 +54,22 @@
       shortmess = "filnxtToOFWIcC";
       filetype = "on";
       inccommand = "nosplit";
-      wildmode = ["longest" "full"];
-      wildoptions = ["pum" "tagfile"];
+      wildmode = [
+        "longest"
+        "full"
+      ];
+      wildoptions = [
+        "pum"
+        "tagfile"
+      ];
       foldmethod = "expr";
       foldexpr = "nvim_treesitter#foldexpr()";
       foldenable = false;
-      completeopt = ["menu" "menuone" "noselect"];
+      completeopt = [
+        "menu"
+        "menuone"
+        "noselect"
+      ];
     };
   };
 }
