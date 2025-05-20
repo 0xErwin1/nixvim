@@ -67,7 +67,7 @@ in
     none-ls.sources.diagnostics.markdownlint.enable = true;
 
     obsidian = {
-      enable = true;
+      enable = false;
       settings = {
         completion = {
           min_chars = 2;

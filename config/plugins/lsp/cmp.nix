@@ -67,19 +67,25 @@ in
     cmp = {
       enable = true;
       settings = {
+        preselect = "None";
         sources = [
-          { name = "nvim_lsp"; }
-          { name = "supermaven"; }
-          { name = "copilot"; }
-          { name = "luasnip"; }
-          { name = "path"; }
-          { name = "buffer"; }
-          { name = "git"; }
+          { name = "nvim_lsp"; priority = 1000; }
+          { name = "copilot"; priority = 900; }
+          { name = "luasnip"; priority = 750; }
+          { name = "buffer"; priority = 500; }
+          { name = "path"; priority = 250; }
+          { name = "git"; priority = 250; }
         ];
 
+        completion = {
+          completeopt = "menu,menuone,noinsert";
+          keyword_pattern = "[[ \k\+]]";
+          keyword_length = 1;
+        };
+
         experimental = {
-          ghostText = true;
-          nativeMenu = true;
+          ghost_text = false;
+          native_menu = false;
         };
 
         snippet.expand = ''
