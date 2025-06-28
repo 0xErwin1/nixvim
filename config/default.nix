@@ -12,5 +12,6 @@
     ./plugins/languages/go.nix
     ./plugins/languages/perl.nix
     ./plugins/languages/java.nix
+    ./plugins/languages/ruby.nix
   ];
 }
