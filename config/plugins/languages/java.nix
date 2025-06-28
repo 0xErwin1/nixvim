@@ -1,3 +1,8 @@
+{ pkgs, ... }:
 {
-  plugins.lsp.servers.java_language_server.enable = true;
+  extraPackages = with pkgs; [
+    jdk21
+  ];
+
+  plugins.lsp.servers.jdtls.enable = true;
 }
