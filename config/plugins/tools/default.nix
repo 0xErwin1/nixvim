@@ -16,7 +16,6 @@
     ./terminal.nix
     ./trouble.nix
     ./which-key.nix
-    ./spider.nix
   ];
 
   plugins = {
