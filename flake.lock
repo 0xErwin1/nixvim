@@ -213,6 +213,22 @@
         "type": "github"
       }
     },
+    "plugin-forest-night": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752612588,
+        "narHash": "sha256-W1j1Yaf1yRruDJnN1ecVh3lCvxWHSUZ4cUCImFy78tI=",
+        "owner": "adibhanna",
+        "repo": "forest-night.nvim",
+        "rev": "401a9bcc0f35ac22f974972ecb094b5be73fee2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adibhanna",
+        "repo": "forest-night.nvim",
+        "type": "github"
+      }
+    },
     "plugin-mcphub": {
       "inputs": {
         "flake-parts": "flake-parts_3",
@@ -285,6 +301,7 @@
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "plugin-forest-night": "plugin-forest-night",
         "plugin-mcphub": "plugin-mcphub",
         "plugin-surround": "plugin-surround",
         "plugin-tokyodark": "plugin-tokyodark",

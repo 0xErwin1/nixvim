@@ -30,6 +30,10 @@
     plugin-mcphub = {
       url = "github:ravitemer/mcphub.nvim";
     };
+    plugin-forest-night = {
+      url = "github:adibhanna/forest-night.nvim";
+      flake = false;
+    };
   };
 
   outputs =

@@ -1,6 +1,17 @@
 { pkgs, inputs, ... }:
 {
 
+  extraPlugins = [
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "forest-night.nvim";
+      src = inputs.plugin-forest-night;
+    })
+  ];
+
+  extraConfigLua = ''
+    vim.cmd('colorscheme forest-night')
+  '';
+
   plugins.transparent.enable = true;
 
   colorschemes = {
@@ -32,7 +43,7 @@
     };
 
     ayu = {
-      enable = true;
+      enable = false;
       settings = {
         mirage = false;
       };
