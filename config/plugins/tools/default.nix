@@ -12,6 +12,7 @@
     ./oil.nix
     ./request.nix
     ./surround.nix
+    ./snapshots.nix
     ./telescope.nix
     ./terminal.nix
     ./trouble.nix

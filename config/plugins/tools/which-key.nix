@@ -48,6 +48,10 @@
           __unkeyed-1 = "<leader>a";
           group = "AI";
         }
+        {
+          __unkeyed-1 = "<leader>s";
+          group = "Take Screenshot";
+        }
       ];
     };
   };
