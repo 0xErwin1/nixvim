@@ -58,6 +58,11 @@
             return hub and hub:get_active_servers_prompt() or ""
           end
         '';
+        providers = {
+          copilot = {
+            model = "copilot/gpt-5";
+          };
+        };
         behaviour = {
           auto_suggestions = false;
           auto_set_highlight_group = true;
@@ -67,13 +72,13 @@
           minimize_diff = true;
           enable_token_counting = true;
         };
-        # custom_tools = ''
-        #   function()
-        #     return {
-        #       require("mcphub.extensions.avante").mcp_tool(),
-        #     }
-        #   end
-        # '';
+        custom_tools = ''
+          function()
+            return {
+              require("mcphub.extensions.avante").mcp_tool(),
+            }
+          end
+        '';
         disabled_tools = [
           "list_files"
           "search_files"
