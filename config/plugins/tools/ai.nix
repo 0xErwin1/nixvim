@@ -72,13 +72,6 @@
           minimize_diff = true;
           enable_token_counting = true;
         };
-        custom_tools = ''
-          function()
-            return {
-              require("mcphub.extensions.avante").mcp_tool(),
-            }
-          end
-        '';
         disabled_tools = [
           "list_files"
           "search_files"
