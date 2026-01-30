@@ -15,5 +15,6 @@
     ./terminal.nix
     ./trouble.nix
     ./which-key.nix
+    ./outline.nix
   ];
 }

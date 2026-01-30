@@ -1,0 +1,3 @@
+{
+plugins.aerial.enable = true;
+}
