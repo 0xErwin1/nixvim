@@ -1,96 +1,58 @@
-{ pkgs, mcphub, ... }:
+{ pkgs, ... }:
 {
   extraPackages = [
     pkgs.python312Packages.uv
   ];
 
-  extraPlugins = [
-    mcphub
-  ];
-
-  extraConfigLua = ''
-    require("mcphub").setup({
-      extensions = {
-        avante = {
-          make_slash_commands = true,
-          enabled = true,
-        }
-      }
-    })
-  '';
+  opts.autoread = true;
 
   plugins = {
-    dressing = {
+    snacks = {
       enable = true;
-    };
-
-    copilot-lua = {
-      enable = false;
       settings = {
-        panel = {
-          enabled = false;
-        };
-        suggestion = {
-          enabled = false;
-        };
-        filetypes = {
-          "." = true;
-          yaml = true;
-          markdown = true;
-          help = false;
-          gitcommit = true;
-          gitrebase = false;
-          hgcommit = false;
-          svn = false;
-          cvs = false;
-        };
+        input.enabled = true;
+        picker.enabled = true;
+        terminal.enabled = true;
       };
     };
 
-    avante = {
+    opencode = {
       enable = true;
       settings = {
-        provider = "opencode";
-        mode = "agentic";
-        system_prompt = ''
-          function()
-            local hub = require("mcphub").get_hub_instance()
-            return hub and hub:get_active_servers_prompt() or ""
-          end
-        '';
-        providers = {
-          copilot = {
-            model = "copilot/gpt-5";
-          };
+        provider = {
+          enabled = "snacks";
         };
-        acp_providers = {
-          opencode = {
-            command = "opencode";
-            args = [ "acp" ];
-          };
-        };
-        behaviour = {
-          auto_suggestions = false;
-          auto_set_highlight_group = true;
-          auto_set_keymaps = true;
-          auto_apply_diff_after_generation = false;
-          support_paste_from_clipboard = false;
-          minimize_diff = true;
-          enable_token_counting = true;
-        };
-        disabled_tools = [
-          "list_files"
-          "search_files"
-          "read_file"
-          "create_file"
-          "rename_file"
-          "delete_file"
-          "create_dir"
-          "rename_dir"
-          "delete_dir"
-          "bash"
-        ];
       };
     };
   };
+
+  keymaps = [
+    {
+      mode = [ "n" "x" ];
+      key = "<leader>oa";
+      action.__raw = ''function() require("opencode").ask("@this: ") end'';
+      options.desc = "Ask opencode";
+    }
+    {
+      mode = [ "n" "x" ];
+      key = "<leader>os";
+      action.__raw = ''function() require("opencode").select() end'';
+      options.desc = "Select opencode action";
+    }
+    {
+      mode = [ "n" "t" ];
+      key = "<leader>ot";
+      action.__raw = ''function() require("opencode").toggle() end'';
+      options.desc = "Toggle opencode";
+    }
+    {
+      mode = [ "n" "x" ];
+      key = "<leader>oo";
+      action.__raw = ''function() return require("opencode").operator("@this ") end'';
+      options = {
+        desc = "Send to opencode";
+        expr = true;
+      };
+    }
+  ];
 }

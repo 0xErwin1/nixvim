@@ -27,9 +27,6 @@
       url = "github:tiagovla/tokyodark.nvim";
       flake = false;
     };
-    plugin-mcphub = {
-      url = "github:ravitemer/mcphub.nvim";
-    };
   };
 
   outputs =
@@ -46,14 +43,12 @@
         { pkgs, system, ... }:
         let
           nixvim' = nixvim.legacyPackages.${system};
-          mcphub = inputs.plugin-mcphub.packages.${system}.default;
 
           mkNvim = module: nixvim'.makeNixvimWithModule {
             inherit pkgs;
             inherit module;
             extraSpecialArgs = {
               inherit inputs;
-              inherit mcphub;
             };
           };
 
