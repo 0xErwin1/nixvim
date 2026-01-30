@@ -1,5 +1,5 @@
 {
-  helpers,
+  lib,
   ...
 }:
 {
@@ -18,8 +18,8 @@
       };
       keymaps = {
         "g?" = "actions.show_help";
-        "gs" = helpers.mkRaw "function() require('oil').set_columns({ 'icon', 'permissions', 'size' }) end";
-        "gS" = helpers.mkRaw "function() require('oil').set_columns({ 'icon' }) end";
+        "gs" = lib.nixvim.mkRaw "function() require('oil').set_columns({ 'icon', 'permissions', 'size' }) end";
+        "gS" = lib.nixvim.mkRaw "function() require('oil').set_columns({ 'icon' }) end";
         "H" = "actions.parent";
         "L" = "actions.select";
       };

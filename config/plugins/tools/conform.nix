@@ -18,7 +18,7 @@ in
     stylua
     shellcheck
     shfmt
-    nixfmt-rfc-style
+    nixfmt
     black
     isort
     biome
