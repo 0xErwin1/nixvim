@@ -19,7 +19,6 @@
 
   plugins = {
     lsp.servers.lua_ls.enable = true;
-    cmp.settings.sources = [ { name = "nvim_lua"; groupIndex = 0; } ];
     none-ls.sources = {
       formatting.stylua.enable = true;
       diagnostics.selene.enable = true;

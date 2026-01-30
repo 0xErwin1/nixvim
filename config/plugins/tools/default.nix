@@ -10,16 +10,10 @@
     ./hover.nix
     ./neoscroll.nix
     ./oil.nix
-    ./request.nix
     ./surround.nix
     ./snapshots.nix
-    ./telescope.nix
     ./terminal.nix
     ./trouble.nix
     ./which-key.nix
   ];
-
-  plugins = {
-    hex.enable = true;
-  };
 }

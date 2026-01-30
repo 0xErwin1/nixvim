@@ -47,38 +47,97 @@
         let
           nixvim' = nixvim.legacyPackages.${system};
           mcphub = inputs.plugin-mcphub.packages.${system}.default;
-          basic = nixvim'.makeNixvimWithModule {
+
+          mkNvim = module: nixvim'.makeNixvimWithModule {
             inherit pkgs;
-            module = import ./config/basic.nix;
+            inherit module;
             extraSpecialArgs = {
               inherit inputs;
               inherit mcphub;
             };
           };
-          work = nixvim'.makeNixvimWithModule {
-            inherit pkgs;
-            module = import ./config/work.nix;
-            extraSpecialArgs = {
-              inherit inputs;
-              inherit mcphub;
-            };
-          };
-          personal = nixvim'.makeNixvimWithModule {
-            inherit pkgs;
-            module = import ./config;
-            extraSpecialArgs = {
-              inherit inputs;
-              inherit mcphub;
-            };
-          };
+
+          basic = mkNvim (import ./config/basic.nix);
+          work = mkNvim (import ./config/work.nix);
+          personal = mkNvim (import ./config);
+
+          # Wrapper that selects profile based on NVIM_PROFILE or directory rules
+          nvim-context = pkgs.writeShellScriptBin "nvim" ''
+            # Priority: NVIM_PROFILE env var > directory rules > default
+            profile="''${NVIM_PROFILE:-}"
+
+            if [ -z "$profile" ]; then
+              cwd="$(pwd)"
+              case "$cwd" in
+                */work/*|*/.work/*|~/work/*)
+                  profile="work"
+                  ;;
+                */personal/*|~/personal/*|~/dev/personal/*)
+                  profile="personal"
+                  ;;
+                *)
+                  profile="basic"
+                  ;;
+              esac
+            fi
+
+            case "$profile" in
+              work)
+                exec ${work}/bin/nvim "$@"
+                ;;
+              personal)
+                exec ${personal}/bin/nvim "$@"
+                ;;
+              *)
+                exec ${basic}/bin/nvim "$@"
+                ;;
+            esac
+          '';
         in
         {
           packages = {
-            default = basic;
-            inherit basic;
-            inherit work;
-            inherit personal;
+            default = nvim-context;
+            inherit basic work personal;
+            nvim-context = nvim-context;
           };
         };
+
+      flake = {
+        # Home Manager module
+        homeManagerModules.default = { config, lib, pkgs, ... }:
+          let
+            cfg = config.programs.nixvim-context;
+          in
+          {
+            options.programs.nixvim-context = {
+              enable = lib.mkEnableOption "nixvim with context-aware profile selection";
+
+              defaultProfile = lib.mkOption {
+                type = lib.types.enum [ "basic" "work" "personal" ];
+                default = "basic";
+                description = "Default profile when no context is detected";
+              };
+
+              workDirs = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+                default = [ "~/work" "~/.work" ];
+                description = "Directories that trigger 'work' profile";
+              };
+
+              personalDirs = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+                default = [ "~/personal" "~/dev/personal" ];
+                description = "Directories that trigger 'personal' profile";
+              };
+            };
+
+            config = lib.mkIf cfg.enable {
+              home.packages = [
+                # This needs to be overridden in the actual home-manager config
+                # since we can't access perSystem packages from here directly
+              ];
+            };
+          };
+      };
     };
 }

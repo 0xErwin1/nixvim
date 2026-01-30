@@ -1,208 +1,94 @@
-{ pkgs, helpers, ... }:
-let
-  kinds = {
-    Supermaven = " ";
-    Copilot = " ";
-    Array = "󰕤 ";
-    Boolean = " ";
-    Class = " ";
-    Color = " ";
-    Constant = " ";
-    Constructor = " ";
-    Enum = " ";
-    EnumMember = " ";
-    Event = "󱐋";
-    Field = " ";
-    File = " ";
-    Folder = " ";
-    Function = "󰘧";
-    Interface = " ";
-    Key = " ";
-    Keyword = " ";
-    Method = " ";
-    Module = " ";
-    Namespace = " ";
-    Null = "󰟢";
-    Number = " ";
-    Object = " ";
-    Operator = " ";
-    Package = " ";
-    Property = "󱕴";
-    Reference = " ";
-    Snippet = " ";
-    String = "󰅳 ";
-    Struct = " ";
-    Text = "󰦪";
-    TypeParameter = "󰡱 ";
-    Unit = " ";
-    Value = " ";
-    Variable = "󰫧 ";
-    Macro = "󱃖 ";
-  };
-in
+{ pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [
-    lspkind-nvim
-  ];
+  plugins.blink-cmp = {
+    enable = true;
+    settings = {
+      keymap = {
+        preset = "enter";
+        "<C-j>" = [ "select_next" "fallback" ];
+        "<C-k>" = [ "select_prev" "fallback" ];
+        "<Tab>" = [ "select_next" "fallback" ];
+        "<S-Tab>" = [ "select_prev" "fallback" ];
+        "<CR>" = [ "accept" "fallback" ];
+        "<C-Space>" = [ "show" "show_documentation" "hide_documentation" ];
+        "<C-e>" = [ "hide" "fallback" ];
+        "<C-u>" = [ "scroll_documentation_up" "fallback" ];
+        "<C-d>" = [ "scroll_documentation_down" "fallback" ];
+        "<C-b>" = [ "scroll_documentation_up" "fallback" ];
+        "<C-f>" = [ "scroll_documentation_down" "fallback" ];
+      };
 
-  extraConfigLua = ''
-    require('lspkind').init({
-      mode = "symbol_text",
-      maxwidth = 50,
-      symbol_map = kinds,
-    })
-  '';
-
-  plugins = {
-    cmp-buffer.enable = true;
-    cmp-async-path.enable = true;
-    cmp-nvim-lsp.enable = true;
-    cmp_luasnip.enable = true;
-    cmp-cmdline.enable = true;
-    cmp-git.enable = true;
-    cmp-nvim-lsp-signature-help.enable = true;
-    cmp-treesitter.enable = true;
-    copilot-cmp.enable = true;
-
-    cmp = {
-      enable = true;
-      settings = {
-        preselect = "None";
-        sources = [
-          { name = "nvim_lsp"; priority = 1000; }
-          { name = "copilot"; priority = 900; }
-          { name = "luasnip"; priority = 750; }
-          { name = "buffer"; priority = 500; }
-          { name = "path"; priority = 250; }
-          { name = "git"; priority = 250; }
-        ];
-
-        completion = {
-          completeopt = "menu,menuone,noinsert";
-          keyword_pattern = "[[ \k\+]]";
-          keyword_length = 1;
+      appearance = {
+        nerd_font_variant = "mono";
+        kind_icons = {
+          Supermaven = " ";
+          Copilot = " ";
+          Array = "󰕤 ";
+          Boolean = " ";
+          Class = " ";
+          Color = " ";
+          Constant = " ";
+          Constructor = " ";
+          Enum = " ";
+          EnumMember = " ";
+          Event = "󱐋";
+          Field = " ";
+          File = " ";
+          Folder = " ";
+          Function = "󰘧";
+          Interface = " ";
+          Key = " ";
+          Keyword = " ";
+          Method = " ";
+          Module = " ";
+          Namespace = " ";
+          Null = "󰟢";
+          Number = " ";
+          Object = " ";
+          Operator = " ";
+          Package = " ";
+          Property = "󱕴";
+          Reference = " ";
+          Snippet = " ";
+          String = "󰅳 ";
+          Struct = " ";
+          Text = "󰦪";
+          TypeParameter = "󰡱 ";
+          Unit = " ";
+          Value = " ";
+          Variable = "󰫧 ";
+          Macro = "󱃖 ";
         };
+      };
 
-        experimental = {
-          ghost_text = false;
-          native_menu = false;
-        };
-
-        snippet.expand = ''
-          function(args)
-            require('luasnip').lsp_expand(args.body)
-          end
-        '';
-
-        mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-e>" = "cmp.mapping.close()";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })";
-          "<Tab>" = helpers.mkRaw ''
-            cmp.mapping(function(fallback)
-              if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-              else
-                fallback()
-              end
-            end)
-          '';
-          "<S-Tab>" = helpers.mkRaw ''
-            cmp.mapping(function(fallback)
-              if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-              else
-                fallback()
-              end
-            end)
-          '';
-          "<C-j>" = "cmp.mapping.select_next_item()";
-          "<C-k>" = "cmp.mapping.select_prev_item()";
-        };
-
-        window = {
-          completion = {
-            winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None";
-            col_offset = -3;
-            side_padding = 0;
-          };
-        };
-
-        formatting = {
-          fields = [
-            "kind"
-            "abbr"
-            "menu"
-          ];
-          format = helpers.mkRaw ''
-            function(entry, vim_item)
-              local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = kinds })(entry, vim_item);
-
-              local strings = vim.split(kind.kind, "%s", { trimempty = true })
-
-              kind.kind = " " .. (strings[1] or "") .. " "
-              kind.menu = "⌈" .. (strings[2] or "") .. "⌋"
-
-              return kind
-            end
-          '';
-        };
-
-        native = {
-          border = [
-            "╭"
-            "─"
-            "╮"
-            "│"
-            "╯"
-            "─"
-            "╰"
-            "│"
-          ];
-        };
-
-        filetype = {
-          sql = {
-            sources = [
-              { name = "cmp-dbee"; }
+      completion = {
+        menu = {
+          border = "rounded";
+          scrollbar = true;
+          draw = {
+            treesitter = [ "lsp" ];
+            columns = [
+              { __unkeyed-1 = "kind_icon"; }
+              { __unkeyed-1 = "label"; __unkeyed-2 = "label_description"; gap = 1; }
+              { __unkeyed-1 = "kind"; }
             ];
           };
-          gitcommit = {
-            sources = [
-              { name = "cmp_git"; }
-              { name = "buffer"; }
-            ];
-          };
-          cmdline = {
-            "/" = {
-              mapping = {
-                __raw = "cmp.mapping.preset.cmdline()";
-              };
-              sources = [ { name = [ "buffer" ]; } ];
-            };
-            "?" = {
-              mapping = {
-                __raw = "cmp.mapping.preset.cmdline()";
-              };
-              sources = [ { name = [ "buffer" ]; } ];
-            };
-            ":" = {
-              mapping = {
-                __raw = "cmp.mapping.preset.cmdline()";
-              };
-              sources = [
-                { name = [ "buffer" ]; }
-                { name = [ "path" ]; }
-                { name = [ "cmdline" ]; }
-              ];
-              matching = {
-                disallowSymbolNonprefixMatching = false;
-              };
-            };
-          };
         };
+        documentation = {
+          auto_show = true;
+          auto_show_delay_ms = 100;
+          window.border = "rounded";
+        };
+        ghost_text.enabled = true;
+      };
+
+      fuzzy.implementation = "lua";
+
+      sources.default = [ "lsp" "path" "snippets" "buffer" ];
+
+      signature = {
+        enabled = true;
+        window.show_documentation = true;
       };
     };
   };
