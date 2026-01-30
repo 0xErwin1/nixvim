@@ -25,7 +25,7 @@
     };
 
     copilot-lua = {
-      enable = true;
+      enable = false;
       settings = {
         panel = {
           enabled = false;
@@ -50,7 +50,7 @@
     avante = {
       enable = true;
       settings = {
-        provider = "copilot";
+        provider = "opencode";
         mode = "agentic";
         system_prompt = ''
           function()
@@ -61,6 +61,12 @@
         providers = {
           copilot = {
             model = "copilot/gpt-5";
+          };
+        };
+        acp_providers = {
+          opencode = {
+            command = "opencode";
+            args = [ "acp" ];
           };
         };
         behaviour = {
