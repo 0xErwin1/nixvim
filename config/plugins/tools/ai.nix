@@ -7,20 +7,11 @@
   opts.autoread = true;
 
   plugins = {
-    snacks = {
-      enable = true;
-      settings = {
-        input.enabled = true;
-        picker.enabled = true;
-        terminal.enabled = true;
-      };
-    };
-
     opencode = {
       enable = true;
       settings = {
         provider = {
-          enabled = "snacks";
+          enabled = "terminal";
         };
       };
     };

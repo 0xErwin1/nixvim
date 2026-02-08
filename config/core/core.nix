@@ -15,6 +15,14 @@
       closetag_filetypes = "html,xhtml,phtml,xml,javascript,typescript,javascriptreact,typescriptreact";
     };
 
+    extraConfigLua = ''
+      vim.api.nvim_create_autocmd("TermOpen", {
+        callback = function()
+          vim.b.mapleader = ","
+        end
+      })
+    '';
+
     opts = {
       shadafile = "NONE";
       number = true;

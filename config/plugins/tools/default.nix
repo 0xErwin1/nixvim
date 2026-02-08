@@ -11,7 +11,6 @@
     ./neoscroll.nix
     ./oil.nix
     ./surround.nix
-    ./snapshots.nix
     ./terminal.nix
     ./trouble.nix
     ./which-key.nix
