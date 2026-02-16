@@ -2,7 +2,7 @@
 let
   treesitter-ignis-grammar = pkgs.tree-sitter.buildGrammar {
     language = "ignis";
-    version = "0.2.0";
+    version = "0.2.4";
     src = inputs.tree-sitter-ignis;
   };
   treesitter-ion-grammar = pkgs.tree-sitter.buildGrammar {
