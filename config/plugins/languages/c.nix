@@ -62,10 +62,10 @@
       settings.formatters_by_ft = {
         nasm = [ "asmfmt" ];
         asm = [ "asmfmt" ];
-        c = [ "clang-format" ];
-        cpp = [ "clang-format" ];
-        cmake = [ "cmake-format" ];
-        make = [ "cmake-format" ];
+        c = [ "clang_format" ];
+        cpp = [ "clang_format" ];
+        cmake = [ "cmake_format" ];
+        make = [ "cmake_format" ];
       };
     };
 

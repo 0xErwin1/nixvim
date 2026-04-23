@@ -103,7 +103,6 @@
         code_actions = {
           gitsigns.enable = true;
           gitrebase.enable = true;
-          refactoring.enable = true;
         };
       };
     };

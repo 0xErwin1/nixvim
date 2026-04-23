@@ -45,17 +45,8 @@ in
         # Python
         python = [ "isort" "black" ];
 
-        # Rust/TOML
-        rust = [ "rustfmt" ];
-        toml = [ "rustfmt" ];
-
         # Zig
         zig = [ "zigfmt" ];
-
-        # C/C++
-        c = [ "clang-format" ];
-        cpp = [ "clang-format" ];
-        cmake = [ "cmake-format" ];
 
         # Shell
         bash = [ "shfmt" ];
