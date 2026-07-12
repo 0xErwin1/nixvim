@@ -10,6 +10,7 @@ in
 {
   extraPackages = [
     pkgs.python312Packages.pylatexenc
+    pkgs.markdownlint-cli
   ];
 
   plugins = {
@@ -64,14 +65,13 @@ in
       };
     };
 
-    none-ls.sources.diagnostics.markdownlint.enable = true;
+    lint.lintersByFt.markdown = [ "markdownlint" ];
 
     obsidian = {
       enable = false;
       settings = {
         completion = {
           min_chars = 2;
-          nvim_cmp = true;
         };
         workspaces = [
           {

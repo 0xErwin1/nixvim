@@ -69,9 +69,29 @@
       };
     };
 
-    none-ls.sources.diagnostics = {
-      checkmake.enable = true;
-      cmake_lint.enable = true;
+    lint = {
+      lintersByFt = {
+        make = [ "checkmake" ];
+        cmake = [ "cmake_lint" ];
+      };
+
+      # cmake-lint ships with cmakelang (the cmake-format package) and is not a
+      # built-in nvim-lint linter, so its diagnostic output is parsed manually.
+      customLinters.cmake_lint = {
+        cmd = "cmake-lint";
+        stdin = false;
+        args = [ ];
+        stream = "stdout";
+        ignore_exitcode = true;
+        parser.__raw = ''
+          require("lint.parser").from_pattern(
+            "([^:]+):(%d+),(%d+): %[(%w+)%] (.+)",
+            { "file", "lnum", "col", "code", "message" },
+            nil,
+            { source = "cmake-lint" }
+          )
+        '';
+      };
     };
   };
 }

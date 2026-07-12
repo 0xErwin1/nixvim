@@ -97,14 +97,6 @@
       inlayHints = true;
     };
 
-    none-ls = {
-      enable = true;
-      sources = {
-        code_actions = {
-          gitsigns.enable = true;
-          gitrebase.enable = true;
-        };
-      };
-    };
+    lint.enable = true;
   };
 }
