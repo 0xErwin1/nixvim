@@ -1,6 +1,5 @@
 {
   extraConfigLua = ''
-    local lspconfig_util = require('lspconfig.util')
     local ignisCommand = vim.env.IGNIS_LSP_PATH
 
     if ignisCommand == nil or ignisCommand == "" then
@@ -15,15 +14,13 @@
       return
     end
 
-    require('lspconfig.configs').ignis = {
-      default_config = {
-        cmd = { ignisCommand, "lsp" },
-        filetypes = { "ignis", "ign" },
-        root_dir = lspconfig_util.root_pattern("ignis.toml", ".git"),
-        settings = {},
-      },
-    }
+    vim.lsp.config("ignis", {
+      cmd = { ignisCommand, "lsp" },
+      filetypes = { "ignis", "ign" },
+      root_markers = { "ignis.toml", ".git" },
+      settings = {},
+    })
 
-    require('lspconfig').ignis.setup({})
+    vim.lsp.enable("ignis")
   '';
 }
