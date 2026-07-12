@@ -71,7 +71,7 @@
         "tagfile"
       ];
       foldmethod = "expr";
-      foldexpr = "nvim_treesitter#foldexpr()";
+      foldexpr = "v:lua.vim.treesitter.foldexpr()";
       foldenable = false;
       completeopt = [
         "menu"

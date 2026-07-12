@@ -1,8 +1,5 @@
 {
   plugins = {
-    lz-n = {
-      enable = true;
-    };
     toggleterm = {
       enable = true;
 

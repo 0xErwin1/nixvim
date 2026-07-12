@@ -23,11 +23,6 @@ in
     settings = {
       # In Nix, grammars are pre-compiled via grammarPackages
       auto_install = false;
-      highlight = {
-        additional_vim_regex_highlighting = true;
-        enable = true;
-      };
-      indent.enable = true;
     };
     languageRegister = {
       ignis = [
