@@ -2,6 +2,7 @@
   imports = [
     ./core
     ./basic.nix
+    ./plugins/languages/brasa.nix
     ./plugins/languages/c.nix
     ./plugins/languages/ignis.nix
     ./plugins/languages/lua.nix

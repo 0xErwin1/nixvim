@@ -31,6 +31,7 @@ in
       formatters_by_ft = {
         "_" = defaultFormatters;
         ignis = defaultFormatters;
+        brasa = defaultFormatters;
 
         # Lua
         lua = [ "stylua" ];

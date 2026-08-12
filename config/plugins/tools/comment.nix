@@ -7,5 +7,6 @@
     local ft = require('Comment.ft')
 
     ft({ 'ignis' }, ft.get('c'))
+    ft({ 'brasa' }, '# %s')
   '';
 }

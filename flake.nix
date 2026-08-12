@@ -11,6 +11,11 @@
       url = "github:Ignis-lang/tree-sitter-ignis";
       flake = false;
     };
+
+    tree-sitter-brasa = {
+      url = "github:0xErwin1/tree-sitter-brasa";
+      flake = false;
+    };
   };
 
   outputs =

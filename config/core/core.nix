@@ -3,6 +3,7 @@
     filetype = {
       extension = {
         ign = "ignis";
+        bras = "brasa";
         ion = "ion";
         http = "http";
       };
