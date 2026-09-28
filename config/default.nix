@@ -4,6 +4,7 @@
     ./basic.nix
     ./plugins/languages/brasa.nix
     ./plugins/languages/c.nix
+    ./plugins/languages/go.nix
     ./plugins/languages/ignis.nix
     ./plugins/languages/lua.nix
     ./plugins/languages/nix.nix
