@@ -2,3 +2,5 @@ result
 .avante_chat_history
 .direnv/
 .logs
+# Local Pi runtime state
+.atl/
